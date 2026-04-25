@@ -17,7 +17,7 @@ int main(){
     cout<<"Masukkan nilai TUGAS \t= ";
     cin>>nilaitugas;
 
-    nilaiAkhir=(nilaiuts*30)+(nilaiuas*40)+(nilaitugas*40);
+    nilaiAkhir=(nilaiuts*30)+(nilaiuas*40)+(nilaitugas*30);
     cout.precision(2);
     cout<<fixed;
     cout<<"-------------------------------------------------"<<endl;
