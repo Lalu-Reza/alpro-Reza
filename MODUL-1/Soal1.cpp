@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
 	int hargaBeras, hargaTelur, HargaMinyakGoreng, NominalUang, Kembalian ;
-	int Seratus=0, Limapuluh=0, DuaPuluh=0, Sepuluh=0, Lima=0, Seribu=0, SeribuKoin=0, LimaRatus=0, DuaRatus=0, SeratusKoin=0, Donasi; 
+	int Seratus, Limapuluh, DuaPuluh, Sepuluh, Lima, Seribu, SeribuKoin, LimaRatus, DuaRatus, SeratusKoin, Donasi; 
 	float ppn=0.25,TotalBelanja;
 	
 	cout<<"========================================="<<endl;
@@ -21,7 +21,7 @@ int main(){
 	ppn=(hargaBeras+hargaTelur+HargaMinyakGoreng)*ppn;
 	TotalBelanja=hargaBeras+hargaTelur+HargaMinyakGoreng;
 	TotalBelanja+=ppn;
-	cout<<"Total Belanja (+ PPN 25%)\t: Rp "<<(double)TotalBelanja<<endl;
+	cout<<"Total Belanja (+ PPN 25%)\t: Rp "<<TotalBelanja<<endl;
 	cout<<"[Fathan]: Ren, totalnya segitu. Uang lu ada berapa?"<<endl;
 	cout<<"[Rendy]: hmmmmmmm, pajaknya gede juga ya."<<endl<<"Nih Than, my uang gweh segini"<<endl;
 	cout<<"Nominal uang Rendy (Rp)\t: ";
