@@ -73,6 +73,7 @@ int main(){
 			berhasil=true;
 		} else {
 		cout<<"Pilihan tidak valid! Ulangi pilihan."<<endl;
+		system("pause");
 		berhasil=true;
 		}
 	}
@@ -138,8 +139,7 @@ int main(){
 		cout<<"Masukkan angka (minimal 5): ";
 		cin>>angka;
 		if (angka<=4){
-			berhasil=true;
-			continue;	
+			berhasil=true;	
 		}
 		else {
 			berhasil=false;
@@ -151,13 +151,13 @@ int main(){
 		for (int i = 1; i <= angka; i++) {
         	for (int j = 1; j <= angka - i; j++) cout << " ";
         		for (int k = 1; k <= (2 * i - 1); k++) cout << "*";
-        cout << endl;
+        cout<<endl;
     	}
 
    		for (int i = angka - 1; i >= 1; i--) {
-        	for (int j = 1; j <= angka - i; j++) cout << " ";
-        		for (int k = 1; k <= (2 * i - 1); k++) cout << "*";
-        cout << endl;
+        	for (int j = 1; j <= angka - i; j++) cout <<" ";
+        		for (int k = 1; k <= (2 * i - 1); k++) cout <<"*";
+        cout<<endl;
     	}
 		cout<<"SELAMAT! ANDA ADALAH PEMENANG TURNAMEN TRIWIZARD! ***"<<endl;
 		cout<<"________________________________________";
