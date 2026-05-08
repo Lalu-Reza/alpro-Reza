@@ -17,7 +17,8 @@ int main(){
 	cin.clear();
 	cin.ignore(1000, '\n');
 	cout<<"[!] Input tidak boleh kosong. Coba lagi."<<endl;
-	berhasil=true;continue;
+	berhasil=true;
+	continue;
 	}
 	cin>>key;
 	if (cin.fail()){
@@ -139,8 +140,9 @@ int main(){
 			}
 		}
 	}
-	cout<<">> [TASK 1/3] COMPLETE - Signal channel restored."<<endl;
+	cout<<p<<">> [TASK 1/3] COMPLETE - Signal channel restored."<<endl;
 	cout << "Tekan ENTER untuk melanjutkan ke [ TASK 2 ]!";
+	cin.ignore();
     cin.get();
 	system ("cls");
 	
@@ -153,34 +155,13 @@ int main(){
 	int urutan=1;
 	x=0;
 	berhasil=true;
-	bool ulang=false;
-	string pernyataan;
+	bool ulang=false, inv=false;
+	char pernyataan;
 	do{
 	bool berhasil1=false;
 	int simpan=0;
 	panjang=0;
 	int panjang2=0;
-
-	if (urutan>3){
-		cout<<"==============================================="<<endl;
-		do{
-			cout<<"Verifikasi Teks Lain? (y/n) : ";
-			cin>>pernyataan;
- 			if(pernyataan=="y" || pernyataan=="Y"){
-			ulang=true;
-			berhasil=false;
-			urutan=1;
-			break;
-			}
-			else if (pernyataan=="n" || pernyataan=="N"){
-			ulang=false;
-			berhasil=false;
-			break;
-			}
-		else cout<<"[!] Input tidak valid. Masukkan y atau n"<<endl;
-		berhasil=true;
-		} while (berhasil);
-	}
 
 	cout<<"Masukkan Kalimat ke-"<<urutan<<"	: ";
 	cin.getline(teks3, 1000);
@@ -229,8 +210,8 @@ int main(){
 	cout<<p<<"4. Palindrom?			: ";
     for (int i = 0; i < panjang; i++) {
 		if (teks3[i] != teks3[panjang - 1 - i]) {
-           cek = false;
-            break;
+        	cek = false;
+        	break;
         }
    }
 	if (cek) {
@@ -238,10 +219,126 @@ int main(){
 	}
 	else cout << "NO" << endl;
 	urutan++;
-	ulang=true;
+	if (urutan>3){
+		cout<<"==============================================="<<endl;
+		do{
+			cout<<"Verifikasi Teks Lain? (y/n) : ";
+			cin>>pernyataan;
+ 			if(pernyataan=='y' || pernyataan=='Y'){
+			ulang=true;
+			inv=false;
+			urutan=1;
+			cin.ignore();
+			break;
+			}
+			else if (pernyataan=='n' || pernyataan=='N'){
+			inv=false;
+			ulang=false;
+			}
+		else cout<<"[!] Input tidak valid. Masukkan y atau n"<<endl;
+		berhasil=true;
+		} while (inv);
+	} else ulang=true;
 	}while(ulang);
+	cout<<">> [TASK 2/3] COMPLETE - Text console back online."<<endl;
+	cout << "Tekan ENTER untuk melanjutkan ke [ TASK 3 ]!";
+    cin.get();
+	system ("cls");
 
-	cout<<"mantap";
-
+	berhasil=false;
+	int bk, ganjil=1 , genap=2;
+	cout<<"[TASK 3/3] ALIGN NAVIGATION MATRIX - Engine Core"<<p;
+	cout<<">> Sistem navigasi mati total akibat sabotase."<<p;
+	cout<<" Rekontruksi matriks koordinat sekarang!"<<p;
+	cout<<p<<"[ MATRIX NAVIGATION ]"<<p<<p;
+	
+	do {
+		cout<<"Masukkan ukuran Navigation Matrix (max 5): ";
+		cin>>bk;
+		if( bk < 3 || bk > 5 ){
+			cout<<"[!] Input tidak valid. Masukkan ukuran antara 3 sampai 5."<<endl;
+			berhasil=true;
+		} else berhasil=false;
+	}while(berhasil);
+	int matrikganjil[bk][bk]; 
+	int matrikgenap[bk][bk];
+	cout<<"-----------------------------------------------"<<endl;
+	cout<<"Prime Coordinate Matrix (Ganjil): "<<endl;
+	for(int i=0 ; i<bk ; i++){
+		for (int j=0 ; j<bk ; j++){
+			matrikganjil[i][j]=ganjil;
+			if (matrikganjil[i][j]<10){
+				cout<<"0"<<matrikganjil[i][j]<<" ";
+			} else cout<<matrikganjil[i][j]<<" ";
+			ganjil+=2;
+		}
+		cout<<endl;
+	}cout<<endl;
+	
+	cout<<"Even Coordinate Matrix (Genap): "<<endl;
+	for(int i=0 ; i<bk ; i++){
+		for (int j=0 ; j<bk ; j++){
+			matrikgenap[i][j]=genap;
+			if (matrikgenap[i][j]<10){
+				cout<<"0"<<matrikgenap[i][j]<<" ";
+			} else cout<<matrikgenap[i][j]<<" ";
+			genap+=2;
+		}
+		cout<<endl;
+	} cout<<endl;
+	cout<<endl<<endl;
+	cout<<"--------------------------------------------------"<<endl<<endl;
+	cout<<"Matriks koordinat telah dipulihkan"<<endl;
+	cout<<"Lakukanlah proses-proses berikut ini untuk membuat matriks koordinat lebih akurat!"<<endl;
+	cout<<"1. Coordinate Matrix Integration"<<endl;
+	cout<<"2. Matrix Transpose"<<endl;
+	cout<<"3. Snake Traverse"<<endl<<endl;
+	cout<<"Tekan ENTER untuk melanjutkan..."<<endl;
+	cin.ignore();
+	cin.get();
+	system ("cls");
+	
+	cout<<"COORDINATE MATRIX INTEGRATION:"<<endl;
+	cout<<"--------------------------------------------------"<<endl;
+	for(int i=0 ; i<bk ; i++){
+		for (int j=0 ; j<bk ; j++){
+			matrikgenap[i][j]=matrikgenap[i][j]+matrikganjil[i][j];
+			if (matrikgenap[i][j]<10){
+				cout<<"0"<<matrikgenap[i][j]<<" ";
+			} else cout<<matrikgenap[i][j]<<" ";
+		}
+		cout<<endl;
+	} cout<<endl<<endl;
+	cout<<"MATRIX TRANSPOSE:"<<endl;
+	cout<<"--------------------------------------------------"<<endl;
+	for(int i=0 ; i<bk ; i++){
+		for (int j=0 ; j<bk ; j++){
+			if (matrikgenap[j][i]<10){
+				cout<<"0"<<matrikgenap[j][i]<<" ";
+			} else cout<<matrikgenap[j][i]<<" ";
+		}
+		cout<<endl;
+	} cout<<endl;
+	cout<<"SNAKE TRAVERSE:"<<endl;
+	cout<<"--------------------------------------------------"<<endl;
+	for(int i = 0; i < bk; i++){
+		if (i%2 ==0) {
+			for (int j=0; j<bk; j++) {
+				if (matrikgenap[j][i] < 10) cout << "0";
+				cout << matrikgenap[j][i] << " ";
+			}
+		} else {
+			for (int j = bk-1; j>=0; j--) {
+				if (matrikgenap[j][i] < 10) cout << "0";
+				cout << matrikgenap[j][i] << " ";
+			}
+		}
+		cout << endl;
+	} cout<<endl;
+	cout<<endl<<endl<<"--------------------------------------------------"<<endl<<endl;
+	cout<<">> [TASK 3/3] COMPLETE - Navigation matrix aligned."<<endl;
+	cout<<"======================================================================"<<endl;
+	cout<<"	ALL TASKS COMPLETE - SHIP SYSTEMS RESTORED"<<endl;
+	cout<<"======================================================================"<<endl;
 	return 0;
 }
