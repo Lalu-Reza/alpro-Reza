@@ -130,7 +130,7 @@ int main(){
 		}
 		cout<<endl;
 	}
-	cout<<"Hasil Dekripsi final		: ";
+	cout<<p<<"Hasil Dekripsi final		: ";
 	for (int i=0;i<baris;i++){
 		for(int j=0;j<4;j++){
 			if (matrik2[i][j]=='_'){
@@ -142,7 +142,6 @@ int main(){
 	}
 	cout<<p<<">> [TASK 1/3] COMPLETE - Signal channel restored."<<endl;
 	cout << "Tekan ENTER untuk melanjutkan ke [ TASK 2 ]!";
-	cin.ignore();
     cin.get();
 	system ("cls");
 	
@@ -156,7 +155,7 @@ int main(){
 	x=0;
 	berhasil=true;
 	bool ulang=false, inv=false;
-	char pernyataan;
+	char pernyataan[1000];
 	do{
 	bool berhasil1=false;
 	int simpan=0;
@@ -223,21 +222,25 @@ int main(){
 		cout<<"==============================================="<<endl;
 		do{
 			cout<<"Verifikasi Teks Lain? (y/n) : ";
-			cin>>pernyataan;
- 			if(pernyataan=='y' || pernyataan=='Y'){
+			cin.getline(pernyataan, 1000);
+ 			if(pernyataan[0]=='y' || pernyataan[0]=='Y'){
 			ulang=true;
 			inv=false;
 			urutan=1;
 			cin.ignore();
 			break;
 			}
-			else if (pernyataan=='n' || pernyataan=='N'){
+			else if (pernyataan[0]=='\0'){
+			cout<<"[!] Input tidak boleh kosong. Coba lagi."<<endl;
+			inv=true;}
+			else if (pernyataan[0]=='n' || pernyataan[0]=='N'){
 			inv=false;
 			ulang=false;
 			}
-		else cout<<"[!] Input tidak valid. Masukkan y atau n"<<endl;
-		berhasil=true;
-		} while (inv);
+			else {
+			cout<<"[!] Input tidak valid. Masukkan y atau n"<<endl;
+			inv=true;}
+			} while (inv);
 	} else ulang=true;
 	}while(ulang);
 	cout<<">> [TASK 2/3] COMPLETE - Text console back online."<<endl;
@@ -293,8 +296,7 @@ int main(){
 	cout<<"1. Coordinate Matrix Integration"<<endl;
 	cout<<"2. Matrix Transpose"<<endl;
 	cout<<"3. Snake Traverse"<<endl<<endl;
-	cout<<"Tekan ENTER untuk melanjutkan..."<<endl;
-	cin.ignore();
+	cout<<"Tekan ENTER untuk melanjutkan...";
 	cin.get();
 	system ("cls");
 	
