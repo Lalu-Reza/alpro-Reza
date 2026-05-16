@@ -120,11 +120,11 @@ void itemEdit(int a){
 	}else if(itemEdit==3){
 		cout<<"____________________________________"<<endl;
 		while (true){
-		cout<<"Tambah Stok: ";
+		cout<<"Kurangi Stok: ";
 		cin>>stokkurang;
 		cin.ignore(1000,'\n');
 		if(stokkurang<1){
-			cout<<"Harga minimal Rp.1"<<endl;
+			cout<<"[Gagal] Kurangi Stok minimal 1"<<endl;
 			system("pause");
 		}else {
 			cout<<"[Berhasil] Stok "<<item[a-1]<<": Rp "<<stok[a-1]<<" -> Rp "<<stok[a-1]-stokkurang<<endl;
