@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int x=0,urutan=x+1,lihat;
+int x=0,lihat;
 string item[1000];
 long long stok[1000];
 long long harga[1000];
@@ -294,7 +294,7 @@ void kal(){
 		cout<<"|            K4LKUL4T0R             |"<<endl;
 		cout<<"x===================================/"<<endl;
 		cout<<"Operator (+, -, *, /) : ";
-		cin>>kalku[0];
+		cin>>kalku;
 		if (cin.fail()){
 			cin.clear();
 			cin.ignore(1000,'\n');
@@ -312,7 +312,7 @@ void kal(){
 			cout<<"Angka kedua : ";
 			cin>>kedua;
 			cout<<endl;
-			cout<<pertama<<" + "<<kedua<<"= "<<pertama+kedua<<endl;
+			cout<<pertama<<" + "<<kedua<<" = "<<pertama+kedua<<endl;
 			system("pause");
 			system("cls");
 			return;
@@ -326,7 +326,7 @@ void kal(){
 			cout<<"Angka kedua : ";
 			cin>>kedua;
 			cout<<endl;
-			cout<<pertama<<" - "<<kedua<<"= "<<pertama-kedua<<endl;
+			cout<<pertama<<" - "<<kedua<<" = "<<pertama-kedua<<endl;
 			system("pause");
 			system("cls");
 			return;
@@ -340,7 +340,7 @@ void kal(){
 			cout<<"Angka kedua : ";
 			cin>>kedua;
 			cout<<endl;
-			cout<<pertama<<" * "<<kedua<<"= "<<pertama*kedua<<endl;
+			cout<<pertama<<" * "<<kedua<<" = "<<pertama*kedua<<endl;
 			system("pause");
 			system("cls");
 			return;
@@ -354,13 +354,13 @@ void kal(){
 			cout<<"Angka kedua : ";
 			cin>>kedua;
 			if (kedua==0){
-				cout<<"Tidak terdefinisi"<<endl;
+				cout<<"Tidak terdefinisi"<<endl<<endl;
 				system("pause");
 				system("cls");
 				return;	
 			}else{
 			cout<<endl;
-			cout<<pertama<<" / "<<kedua<<"= "<<pertama/kedua<<endl;
+			cout<<pertama<<" / "<<kedua<<" = "<<pertama/kedua<<endl;
 			system("pause");
 			system("cls");
 			return;
