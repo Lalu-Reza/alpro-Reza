@@ -2,7 +2,7 @@
 using namespace std;
 int x=0,lihat;
 string item[1000];
-long long stok[1000];
+int stok[1000];
 long long harga[1000];
 
 void bannerInput(){
@@ -117,7 +117,7 @@ void itemEdit(int a){
 			break;
 		}
 		};
-	}else if(itemEdit==3){
+	}else {
 		cout<<"____________________________________"<<endl;
 		while (true){
 		cout<<"Kurangi Stok: ";
@@ -131,13 +131,10 @@ void itemEdit(int a){
 			stok[a-1]-=stokkurang;
 			system("pause");
 			break;
-		}
 		};
-	}else {
-		system("cls");
-		break;
+		}
 	}
-	};
+	}
 }
 void edit(){
 	int editItem;
@@ -250,8 +247,14 @@ void inputItem(){
 	system("cls");
     return;
 }
+long faktorials(int a){
+	if (a==1||a==0){
+		return 1;
+	}
+		return a * faktorials(a-1);
+}
 void faktorial(){
-	int fakto,n=1;
+	int fakto;
 	cout<<"+===================================-"<<endl;
 	cout<<"|            K4LKUL4T0R             |"<<endl;
 	cout<<"x===================================/"<<endl;
@@ -277,10 +280,8 @@ void faktorial(){
 		system("cls");
 		return;
 	}else {
-	for(int i=fakto;i>1;i--){
-		n=i*n;
-	}
-	cout<<fakto<<"!"<<" = "<<n<<endl;
+	cout<<fakto<<"!"<<" = ";
+	cout<<faktorials(fakto)<<endl;
 		system("pause");
 		system("cls");
 		return;
@@ -416,9 +417,8 @@ void pil1(){
 			hapusBarang();
 		}else if(store==3){
 			edit();
-		}else if(store==4){
-			lihatBarang();
 		}else {
+			lihatBarang();
 		}
 	}while(berhasil);
 }
@@ -455,7 +455,7 @@ void pil2(){
 		}else if (pilihkal==2){
 			system("cls");
 			faktorial();
-		}else if(pilihkal==0) {
+		}else {
 			system("cls");
 			return;
 		}
