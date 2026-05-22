@@ -883,7 +883,7 @@ void pil4(){
 	char pilih[10];
 	gagal = false;
 	cout << endl << " Pasien wajib melunasi tagihan sebelum dipulangkan." << endl << endl;
-	cout << " Yakin ingin memulangkan pasien ini? (y/n): ";
+	cout << " Yakin ingin memulangkan pasien ini? (y/t): ";
 	cin.getline(pilih, 10);
 	while((pilih[0] != 'y' && pilih[0] != 'Y' && pilih[0] != 't' && pilih[0] != 'T') || (pilih[0] == '\n' || pilih[0] == '\0')){
 		bool kosong = (pilih[0] == '\n' || pilih[0] == '\0');
@@ -899,7 +899,7 @@ void pil4(){
 		} else if (bukan){
 			cout<<"[Gagal] Harus memilih (y) Ya atau (t) Tidak!" << endl;
 		}
-	cout << " Yakin ingin memulangkan pasien ini? (y/n): ";
+	cout << " Yakin ingin memulangkan pasien ini? (y/t): ";
 	cin.getline(pilih, 10);
 	}if (gagal) {
 		cout << "\033[A\033[2K";
