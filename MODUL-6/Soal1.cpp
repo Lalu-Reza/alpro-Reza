@@ -1,46 +1,37 @@
 #include <iostream>
 #include <climits>
-
 using namespace std;
 
 constexpr int buffer_limit = 128;
 int buffer_resize = buffer_limit;
-
 char* memori = nullptr;
 int* catatan_panjang = nullptr;
 int* tipeInput = nullptr;
-
 int kursor = 0;
 int jumlah_inputan = 0;
 
 void clear() {
     cout << "\033[2J\033[H";
 }
-
 void enter() {
     cout << ">> Tekan ENTER untuk pulse berikutnya...";
     cin.get();
 }
-
 void garis() {
     cout << "------------------------------------------------------------" << endl;
 }
-
 void pil1() {
     int stabilitas = 100 - (100 * kursor / buffer_resize);
     if (stabilitas < 0) stabilitas = 0;
-
     clear();
     cout << "============================================================" << endl;
     cout << "NEURAL MAP: HISTORIA KOURA [STABILITAS: " << stabilitas << "%]" << endl;
     cout << "============================================================" << endl;
-    
     if (jumlah_inputan == 0) {
         cout << "(Buffer kosong. Xelisa sedang mengumpulkan kekuatan...)" << endl;
     } else {
         int indeks_baca = 0;
         bool ada_data_aktif = false;
-
         for (int i = 0; i < jumlah_inputan; i++) {
             if (tipeInput[i] != 0) {
                 ada_data_aktif = true;
@@ -75,23 +66,19 @@ void pil1() {
     garis();
     enter();
 }
-
 void pil2() {
     clear();
     char input_user[500];
     char tipe_pilihan;
     int sisaMemori = buffer_resize - kursor;
-
     cout << "Pilih Tipe Injeksi: 0 = Willpower (Teks), 1 = Thunder (Energi): ";
     cin >> tipe_pilihan;
     cin.ignore(INT_MAX, '\n');
-
     if (tipe_pilihan != '0' && tipe_pilihan != '1') {
         cout << "!! ERROR !! Opsi tipe injeksi tidak valid." << endl;
         enter();
         return;
     }
-
     if (tipe_pilihan == '0') {
         cout << "Masukkan Input Willpower: ";
         cin.getline(input_user, 500);
@@ -100,7 +87,6 @@ void pil2() {
         while (input_user[panjangInputBaru] != '\0') {
             panjangInputBaru++;
         }
-
         if (panjangInputBaru >= sisaMemori) {
             cout << "!! ERROR OPTIMALISASI !! Ego vessel menolak thread! Memori penuh." << endl;
         } else {
@@ -121,34 +107,28 @@ void pil2() {
     } else {
         cout << "Masukkan Tingkat Energi Thunder (int): ";
         cin.getline(input_user, 500);
-
         int panjangInputBaru = 0;
         while (input_user[panjangInputBaru] != '\0') {
             panjangInputBaru++;
         }
-
         if (panjangInputBaru == 0) {
             cout << "!! ERROR !! Input tidak boleh kosong" << endl;
             enter();
             return;
         }
-
         bool valid = true;
         int start_idx = (input_user[0] == '-' && panjangInputBaru > 1) ? 1 : 0;
-
         for (int v = start_idx; v < panjangInputBaru; v++) {
             if (input_user[v] < '0' || input_user[v] > '9') {
                 valid = false;
                 break;
             }
         }
-
         if (!valid) {
             cout << "!! ERROR !! Input ditolak! Tingkat Energi Thunder (int) tidak boleh mengandung huruf." << endl;
             enter();
             return;
         }
-
         if (panjangInputBaru >= sisaMemori) {
             cout << "!! ERROR OPTIMALISASI !! Burnout neural terdeteksi!" << endl;
         } else {
@@ -169,7 +149,6 @@ void pil2() {
     }
     enter();
 }
-
 void pil3() {
     clear();
     if (jumlah_inputan == 0) {
@@ -177,11 +156,9 @@ void pil3() {
         enter();
         return;
     }
-
     int indeks_target = 0;
     cout << "Masukkan indeks link untuk dihapus (0 - " << jumlah_inputan - 1 << "): ";
     cin >> indeks_target;
-
     if (cin.fail() || indeks_target < 0 || indeks_target >= jumlah_inputan) {
         cin.clear();
         cin.ignore(INT_MAX, '\n');
@@ -190,7 +167,6 @@ void pil3() {
         return;
     }
     cin.ignore(INT_MAX, '\n');
-
     if (tipeInput[indeks_target] == 0) {
         cout << "Indeks link sudah dihapus sebelumnya." << endl;
     } else {
@@ -206,7 +182,6 @@ void pil4() {
     long long tambahan = 0;
     cout << "Masukkan batas buffer baru: ";
     cin >> tambahan;
-
     if (cin.fail() || tambahan <= 0 || tambahan > INT_MAX || tambahan < buffer_resize) {
         cin.clear();
         cin.ignore(INT_MAX, '\n');
@@ -220,12 +195,10 @@ void pil4() {
     char* memori_baru = new char[kapasitas_baru];
     int* buffer_baru = new int[kapasitas_baru];
     int* tipe_baru = new int[kapasitas_baru];
-
     for (int j = 0; j < kursor; j++) {
         memori_baru[j] = memori[j];
     }
     memori_baru[kursor] = '\0';
-
     for (int i = 0; i < kapasitas_baru; i++) {
         if (i < buffer_resize) {
             buffer_baru[i] = catatan_panjang[i];
@@ -239,7 +212,6 @@ void pil4() {
     delete[] memori;
     delete[] catatan_panjang;
     delete[] tipeInput;
-
     memori = memori_baru;
     catatan_panjang = buffer_baru;
     tipeInput = tipe_baru;
@@ -259,22 +231,18 @@ int main(int argc, char* argv[]) {
         cout << "Error: Terlalu banyak parameter. Koneksi tidak stabil." << endl;
         return 1;
     }
-
     int panjang = 0;
     while (argv[1][panjang] != '\0') {
         panjang++;
     }
-
     if (panjang != 11) {
         cout << "Error: NIM harus tepat 11 karakter." << endl;
         return 1;
     }
-
     if (argv[1][0] != 'F' || argv[1][1] != '1' || argv[1][2] != 'D' || argv[1][3] != '0' || argv[1][4] != '2') {
         cout << "Error: NIM harus diawali dengan 'F1D02'." << endl;
         return 1;
     }
-
     memori = new char[buffer_resize];
     catatan_panjang = new int[buffer_resize];
     tipeInput = new int[buffer_resize];
@@ -305,7 +273,6 @@ int main(int argc, char* argv[]) {
             cin.get();
             continue;
         }
-
         if (pilihan[0] == '0') {
             clear();
             cout << "Realitas mulai tidak stabil..." << endl;
@@ -327,7 +294,6 @@ int main(int argc, char* argv[]) {
             pil4();
         }
     }
-
     delete[] memori;
     delete[] catatan_panjang;
     delete[] tipeInput;
