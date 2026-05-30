@@ -11,6 +11,8 @@
 #define Magenta "\033[1;35m"
 using namespace std;
 
+string namaAuthor;
+
 string getCurrentTimestamp() {
     time_t now = time(nullptr);
     char buffer[20];
@@ -37,6 +39,7 @@ void Clear(){
 }
 void utama(){
 	cout << Cyan << " GITSIM" << White << " - Lightweight Git Simulator" << endl;
+	cout << namaAuthor;
 }
 
 int main(int argc, char* argv[]) {
@@ -44,7 +47,7 @@ int main(int argc, char* argv[]) {
 		cout << ".\\trial.exe <Name_Author>";
 		return 1;
 	}
-	string namaAuthor = argv[1];
+	namaAuthor = argv[1];
 	bool loop = true;
 	int x = 0;
 	string inputan[100];
